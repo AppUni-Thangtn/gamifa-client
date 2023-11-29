@@ -8,8 +8,8 @@ import RightDiv from '@/components/RightDiv';
 const inter = Inter({ subsets: ['latin'] });
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  // const host = context.req.headers.host || 'staging.gamifa.com';
-  const host = 'staging.gamifa.com';
+  const host = context.req.headers.host || 'staging.gamifa.com';
+  // const host = 'staging.gamifa.com';
   const url = `https://${host}`;
 
   const serverUrl =

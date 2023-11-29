@@ -2,7 +2,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { slideInFromBottom, slideInFromTop } from '@/utils/motion';
-import Image from 'next/image';
 
 type Props = {
   imageUrl: string;

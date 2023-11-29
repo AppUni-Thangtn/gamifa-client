@@ -6,9 +6,13 @@ import { slideInFromBottom, slideInFromTop } from '@/utils/motion';
 type Props = {
   imageUrl: string;
   name: string;
+  domain: string;
 };
 
-const RightDiv = ({ imageUrl, name }: Props) => {
+const loginUrl =
+  process.env.LOGIN_URL || 'https://auth.gamifa.com/v/login?base_url=';
+
+const RightDiv = ({ imageUrl, name, domain }: Props) => {
   return (
     <motion.div
       initial={'hidden'}
@@ -40,7 +44,7 @@ const RightDiv = ({ imageUrl, name }: Props) => {
         <button
           className={`border border-primary p-2 bg-primary hover:bg-[#fff] hover:text-primary text-[#fff] rounded-md w-40 uppercase`}
         >
-          Tham gia ngay
+          <a href={loginUrl + domain}>Tham gia ngay</a>
         </button>
       </motion.div>
     </motion.div>

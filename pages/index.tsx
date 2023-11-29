@@ -27,6 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
       icon: channelData.avatar.media_url,
       shortDescription: channelData.short_description,
       description: channelData.description,
+      domain: url,
     },
   };
 };
@@ -37,6 +38,7 @@ export default function Home({
   icon,
   description,
   shortDescription,
+  domain,
 }: any) {
   return (
     <>
@@ -45,6 +47,7 @@ export default function Home({
         <link rel="icon" type="image/x-icon" href={icon}></link>
         <meta name="description" content={description} />
         <meta property="og:title" content={title} key="title" />
+        <meta property="og:description" content={description} />
         <meta property="og:image" content={icon} />
         <meta property="og:image:alt" content={shortDescription} />
 
@@ -58,7 +61,7 @@ export default function Home({
         <div className=" max-w-screen-xl m-auto">
           <div className="flex min-h-screen flex-row items-center justify-between">
             <LeftDiv name={title} description={shortDescription} />
-            <RightDiv imageUrl={icon} name={title} />
+            <RightDiv imageUrl={icon} name={title} domain={domain} />
           </div>
         </div>
       </main>

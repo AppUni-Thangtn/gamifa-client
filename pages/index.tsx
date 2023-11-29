@@ -6,20 +6,28 @@ import Head from 'next/head';
 const inter = Inter({ subsets: ['latin'] });
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  console.log('context.req', context.req.headers['host']);
+  const res = await fetch(
+    'https://education-api.iceo.tech/api/channel/list?domain=https://staging.gamifa.com'
+  );
+  const channelData = (await res.json())[0];
+
   return {
     props: {
       fonts: inter,
-      title: 'Thang Trinh',
+      title: channelData.name,
+      icon: channelData.avatar.media_url,
+      description: channelData.description,
     },
   };
 };
 
-export default function Home({ title }: any) {
+export default function Home({ title, icon, description }: any) {
   return (
     <>
       <Head>
         <title>{title}</title>
+        <link rel="icon" type="image/x-icon" href={icon}></link>
+        <meta name="description" content={description} />
         <meta property="og:title" content={title} key="title" />
       </Head>
       <main

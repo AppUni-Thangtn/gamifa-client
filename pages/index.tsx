@@ -6,10 +6,17 @@ import Head from 'next/head';
 const inter = Inter({ subsets: ['latin'] });
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
+  const host = context.req.headers.host;
+
+  const url =
+    host ||
+    'https://gamifa-client-8zx79fsdn-appuni-thangtns-projects.vercel.app/';
+
   const res = await fetch(
-    'https://education-api.iceo.tech/api/channel/list?domain=https://staging.gamifa.com'
+    `https://staging-api.gamifa.vn/api/channel/list?domain=${url}`
   );
   const channelData = (await res.json())[0];
+  console.log('data', channelData);
 
   return {
     props: {

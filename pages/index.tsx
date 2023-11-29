@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const host = context.req.headers.host;
 
-  const url = 'gamifa-client.vercel.app';
+  const url = `https://${host}`;
 
   const res = await fetch(
     `https://staging-api.gamifa.vn/api/channel/list?domain=${url}`

@@ -2,11 +2,14 @@ import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import LeftDiv from '@/components/LeftDiv';
+import RightDiv from '@/components/RightDiv';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  const host = context.req.headers.host || 'staging.gamifa.com';
+  // const host = context.req.headers.host || 'staging.gamifa.com';
+  const host = 'staging.gamifa.com';
   const url = `https://${host}`;
 
   const serverUrl =
@@ -33,10 +36,8 @@ export default function Home({
   title,
   icon,
   description,
-  short_description,
+  shortDescription,
 }: any) {
-  console.log('title', title);
-  console.log('host', host);
   return (
     <>
       <Head>
@@ -45,16 +46,22 @@ export default function Home({
         <meta name="description" content={description} />
         <meta property="og:title" content={title} key="title" />
         <meta property="og:image" content={icon} />
-        <meta property="og:image:alt" content={short_description} />
+        <meta property="og:image:alt" content={shortDescription} />
 
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image:src" content={icon} />
-        <meta name="twitter:image:alt" content={short_description} />
+        <meta name="twitter:image:alt" content={shortDescription} />
       </Head>
-      <main
-        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-      ></main>
+
+      <main className="bg-[#fff]">
+        <div className=" max-w-screen-xl m-auto">
+          <div className="flex min-h-screen flex-row items-center justify-between">
+            <LeftDiv name={title} description={shortDescription} />
+            <RightDiv imageUrl={icon} name={title} />
+          </div>
+        </div>
+      </main>
     </>
   );
 }

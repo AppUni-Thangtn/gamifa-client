@@ -27,8 +27,8 @@ const RightDiv = ({ imageUrl, name, domain }: Props) => {
         <h1
           className="text-lg md:text-2xl font-semibold uppercase "
           style={{
-            fontSize: 'calc(1.5em + 1.5vw)',
-            lineHeight: '50px',
+            fontSize: 'calc(1em + 1vw)',
+            lineHeight: '30px',
           }}
         >
           {name}

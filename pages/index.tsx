@@ -8,9 +8,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const host = context.req.headers.host;
 
-  const url =
-    host ||
-    'https://gamifa-client-8zx79fsdn-appuni-thangtns-projects.vercel.app/';
+  const url = 'gamifa-client.vercel.app';
 
   const res = await fetch(
     `https://staging-api.gamifa.vn/api/channel/list?domain=${url}`
@@ -20,6 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 
   return {
     props: {
+      host: host,
       fonts: inter,
       title: channelData.name,
       icon: channelData.avatar.media_url,
@@ -28,7 +27,9 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   };
 };
 
-export default function Home({ title, icon, description }: any) {
+export default function Home({ host, title, icon, description }: any) {
+  console.log('title', title);
+  console.log('host', host);
   return (
     <>
       <Head>

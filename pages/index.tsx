@@ -22,12 +22,19 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
       fonts: inter,
       title: channelData.name,
       icon: channelData.avatar.media_url,
+      shortDescription: channelData.short_description,
       description: channelData.description,
     },
   };
 };
 
-export default function Home({ host, title, icon, description }: any) {
+export default function Home({
+  host,
+  title,
+  icon,
+  description,
+  short_description,
+}: any) {
   console.log('title', title);
   console.log('host', host);
   return (
@@ -37,6 +44,8 @@ export default function Home({ host, title, icon, description }: any) {
         <link rel="icon" type="image/x-icon" href={icon}></link>
         <meta name="description" content={description} />
         <meta property="og:title" content={title} key="title" />
+        <meta property="og:image" content={icon} />
+        <meta property="og:image:alt" content={short_description} />
       </Head>
       <main
         className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}

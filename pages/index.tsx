@@ -12,9 +12,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const serverUrl =
     process.env.SERVER_URL || 'https://staging-api.gamifa.vn/api';
 
-  const res = await fetch(
-    `${process.env.SERVER_URL}/channel/list?domain=${url}`
-  );
+  const res = await fetch(`${serverUrl}/channel/list?domain=${url}`);
   const channelData = (await res.json())[0];
   console.log('data', channelData);
 

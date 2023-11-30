@@ -11,6 +11,8 @@ type Props = {
 
 const loginUrl =
   process.env.LOGIN_URL || 'https://auth.gamifa.com/v/login?base_url=';
+const signUpUrl =
+  process.env.SIGN_UP || 'https://auth.gamifa.com/v/signup?base_url=';
 
 const RightDiv = ({ imageUrl, name, domain }: Props) => {
   return (
@@ -41,11 +43,18 @@ const RightDiv = ({ imageUrl, name, domain }: Props) => {
         <h3 className="text-2xl font-medium text-center md:text-left">
           Tham gia cộng đồng ngay
         </h3>
-        <button
-          className={`border border-primary p-2 bg-primary hover:bg-[#fff] hover:text-primary text-[#fff] rounded-md w-40 uppercase`}
-        >
-          <a href={loginUrl + domain}>Tham gia ngay</a>
-        </button>
+        <div className="flex space-x-4">
+          <button
+            className={`border border-primary p-2 bg-primary hover:bg-[#fff] hover:text-primary text-[#fff] rounded-md w-40 uppercase`}
+          >
+            <a href={loginUrl + domain}>Đăng nhập</a>
+          </button>
+          <button
+            className={`border border-primary p-2 bg-white hover:bg-primary hover:text-[#fff] text-primary rounded-md w-40 uppercase`}
+          >
+            <a href={signUpUrl + domain}>Đăng ký</a>
+          </button>
+        </div>
       </motion.div>
     </motion.div>
   );

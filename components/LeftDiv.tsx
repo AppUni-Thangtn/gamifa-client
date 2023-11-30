@@ -25,8 +25,8 @@ const LeftDiv = ({ name, description }: Props) => {
         `}
         style={{
           transition: 'height 0.5s ease, width 1s ease 0.5s',
-          borderTopRightRadius: '100px',
-          borderBottomRightRadius: '100px',
+          // borderTopRightRadius: '100px',
+          // borderBottomRightRadius: '100px',
         }}
       ></div>
       <motion.div

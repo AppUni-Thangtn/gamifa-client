@@ -17,7 +17,6 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 
   const res = await fetch(`${serverUrl}/channel/list?domain=${url}`);
   const channelData = (await res.json())[0];
-  console.log('data', channelData);
 
   return {
     props: {
